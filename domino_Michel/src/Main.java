@@ -24,7 +24,7 @@ public class Main {
                 System.out.println("PEÇAS DO BOT ACABARAM - VITÓRIA DO COMPUTADOR");
                 break;
             }
-            System.out.println("------ PEÇAS JOGADAS ------ ");
+            System.out.println("**********         PEÇAS JOGADAS         ********** ");
             jogo.imprimirLista();
             System.out.println("Número da peça da Ponta: " + jogo.p1);
             System.out.println("Número da peça da outra Ponta: " + jogo.p2);
@@ -103,7 +103,8 @@ public class Main {
     }
 
     public static void playerPlay() {
-        System.out.println("Peças do PLAYER");
+        System.out.println("");
+        System.out.println("---     Peças do PLAYER");
         pecasPlayer.imprimirLista();
         System.out.println("Escolha qual peça deseja jogar: Digite o número correspondente");
         System.out.println("Para passar a vez DIGITE -1 ");

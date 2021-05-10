@@ -35,26 +35,6 @@ public class List {
         size++;
     }
 
-    public void insertPeca(Peca peca, int i) {
-        if (i <= 0) {
-            insertHead(peca);
-        } else if (i >= size) {
-            insertLast(peca);
-        } else {
-            Node it = head;
-            for (int j = 0; j < i; i++) {
-                it = it.next;
-            }
-            Node no = new Node();
-            no.peca = peca;
-            no.prev = it;
-            no.next = it.next;
-            it.next = no;
-            no.next.prev = no;
-            size++;
-        }
-    }
-
     public void removePeca(int i) {
         if (i == 0) {
             removeHead();
