@@ -18,35 +18,35 @@ public class Main {
         distribuirPecasBot();
         distribuirPecasP();
         while (true) {
-            System.out.println("Jogada do Bot: ");
+            System.out.println(":::JOGADA DO BOT:::");
             botPlay();
             if (pecasBot.size == 0) {
-                System.out.println("PEÇAS DO BOT ACABARAM - VITÓRIA DO COMPUTADOR");
+                System.out.println("::::PEÇAS DO BOT ACABARAM - VITÓRIA DO COMPUTADOR::::");
                 break;
             }
             System.out.println("**********         PEÇAS JOGADAS         ********** ");
             jogo.imprimirLista();
-            System.out.println("Número da peça da Ponta: " + jogo.p1);
-            System.out.println("Número da peça da outra Ponta: " + jogo.p2);
+            System.out.println("---> Número da peça da Ponta: " + jogo.p1);
+            System.out.println("---> Número da peça da outra Ponta: " + jogo.p2);
             playerPlay();
             if (pecasPlayer.size == 0) {
-                System.out.println("SUAS PEÇAS ACABARAM - VITÓRIA");
+                System.out.println(":::::SUAS PEÇAS ACABARAM - VITÓRIA::::");
                 break;
             }
-            if(travado >= 6){
-                System.out.println("O jogo teve 6 rodadas passadas, será finalizado!");
+            if (travado >= 6) {
+                System.out.println(":::: O jogo teve 6 rodadas passadas, será finalizado! ::::");
                 contagemPecas();
                 break;
             }
         }
     }
 
-    public static void contagemPecas(){
-        if(pecasBot.size > pecasPlayer.size){
+    public static void contagemPecas() {
+        if (pecasBot.size > pecasPlayer.size) {
             System.out.println("VITÓRIA - VOCÊ TEM MENOS PEÇAS QUE O COMPUTADOR!");
-        }else if(pecasBot.size < pecasPlayer.size){
+        } else if (pecasBot.size < pecasPlayer.size) {
             System.out.println("VITÓRIA DO COMPUTADOR - NÚMERO DE PEÇAS MENOR!");
-        }else{
+        } else {
             System.out.println("Número de peças igual - EMPATE!");
         }
     }
@@ -104,7 +104,7 @@ public class Main {
 
     public static void playerPlay() {
         System.out.println("");
-        System.out.println("---     Peças do PLAYER");
+        System.out.println("::::::::     Peças do PLAYER");
         pecasPlayer.imprimirLista();
         System.out.println("Escolha qual peça deseja jogar: Digite o número correspondente");
         System.out.println("Para passar a vez DIGITE -1 ");
@@ -114,8 +114,6 @@ public class Main {
             travado++;
         } else {
             Node no = pecasPlayer.returnNode(e);
-            pecasPlayer.removePeca(e);
-            System.out.println("Peça jogada: " + no.peca.n1 + "  /  " + no.peca.n2);
             if (jogo.p1 == no.peca.n1) {
                 jogo.p1 = no.peca.n2;
                 jogo.insertHead(no.peca);
@@ -128,6 +126,13 @@ public class Main {
             } else if (jogo.p2 == no.peca.n2) {
                 jogo.p2 = no.peca.n1;
                 jogo.insertLast(no.peca);
+            } else {
+                e = -1;
+                System.out.println("Peça escolhida é inválida! Sua vez foi passada!");
+            }
+            if (e != -1) {
+                pecasPlayer.removePeca(e);
+                System.out.println("Peça jogada: " + no.peca.n1 + "  /  " + no.peca.n2);
             }
         }
     }
